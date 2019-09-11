@@ -36,17 +36,17 @@ recommend the linux system to run the codes
 
 ## 3.2 read in scRNA-seq datasets
 ```
-
 #' load the example data
-## data("example1")
-data("example2")
+data("example1")
+# or 
+# data("example2")
 ```
 In this example, we define 3 co-expression clusters for each dataset of the input list example1 and example2
 
 ## 3.3 read in ground truth cell labels (this is optional)
 ```
 data(example1.member)
-data(example2.member)
+# data(example2.member)
 ```
 
 ## 3.4 run the function with specific lambda across multiple datasets
@@ -57,7 +57,8 @@ result1 contains the latent variables accompanied with other coefficients, the i
 
 ## 3.5 evaluate of clustering results using ground truth (this is optional)
 ```
-## calculate the ARI index
+# calculate the Adjusted Rand Index
+
 library(clues)
 adjustedRand(result1$clusters,example1.member)
 ```
