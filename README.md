@@ -34,7 +34,7 @@ library(scLM)
 ```
 recommend the linux system to run the codes
 
-## 3.2 read in RNA-seq datasets
+## 3.2 read in scRNA-seq datasets
 ```
 
 #' load the example data
