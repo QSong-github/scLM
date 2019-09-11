@@ -68,7 +68,7 @@ can be found using the example.R script
 
 # 5. without prior knowledge, run the function with several lambda across multiple datasets 
 
-## 5.1. How to use
+## 5.1 How to use
 
 ```
 for (lambda in 1:20)
