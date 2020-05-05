@@ -9,7 +9,7 @@ devtools::github_install("scLM")
 # 2. Input scRNA-seq Data File Format
 scLM works with multiple single cell RNA-seq dataset as inputs. It also works with one single cell dataset. Bascially, the format looks like the following. Example data files can be found in the ```Data``` folder.
 
-        | Cell1ID | Cell2ID | Cell3ID | Cell4ID | Cell5ID  | ... |
+| CellID | Cell1ID | Cell2ID | Cell3ID | Cell4ID  | ... |
 |----|--------|--------|--------|---------|-----|
 | Gene1 | 12 | 0 | 0 | 0 | ... |
 | Gene2 | 125 | 0 | 298 | 0  | ... |
