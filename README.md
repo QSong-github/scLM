@@ -3,7 +3,7 @@ A R-based tool to do the automatic identification of co-expressed genes across m
 
 # 1. Installation
 ```
-devtools::github_install("scLM")
+devtools::install_github("QSong-github/scLM")
 ```
 
 # 2. Input scRNA-seq Data File Format
