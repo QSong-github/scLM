@@ -51,7 +51,7 @@ data(example1.member)
 
 ## 3.4 run the function with specific lambda across multiple datasets
 ```
-result1 <- Multi_NB(datalist=example1, N=3, K=nrow(example1[[1]]))
+result1 <- Multi_NB(datalist=example1, K=3, N=nrow(example1[[1]]))
 ```
 result1 contains the latent variables accompanied with other coefficients, the identified co-expression clusters
 
@@ -73,7 +73,7 @@ can be found using the example.R script
 ```
 for (lambda in 1:20)
 {
-    results <- Multi_NB(datalist=example1, N=lambda, K=nrow(example1[[1]]))
+    results <- Multi_NB(datalist=example1, K=lambda, N=nrow(example1[[1]]))
     save(results,file=paste0('path1',lambda,'results.RData')）
 }
 ```
