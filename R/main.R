@@ -87,7 +87,7 @@ Multi_NB <- function(datalist,N,K,n.burnin=200,n.draw=200,maxiter=20,eps=1.0e-4,
                         res = mclapply(1:ncol(dx$xi),FUN=function(f)
                             {
     datas <- data.frame(finalZ,y=dx$xi[,f]);
-    fm_n1 <- glmregNB(y ~ .,data=datas,family='negbin',penalty="enet",lambda=lambda0,alpha=alpha0,thresh=thresh0,standardize=FALSE);
+    fm_n1 <- glmregNB(y ~ .,data=datas,family='negbin',penalty="enet",lambda=lambda,alpha=alpha,thresh=thresh,standardize=FALSE);
     return(list(coefs=as.matrix(coef(fm_n1)),ths=fm_n1$theta,mus=fm_n1$fitted.values))},
                             mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
 
