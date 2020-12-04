@@ -6,8 +6,8 @@ library(mpath); library(zic); library(pscl); library(glmnet); library(MASS); lib
 #' @title scLM main function
 #' @description extract co-expressed genes across multiple single-cell datasets simultaneously
 #' @param datalist consists of multiple scRNA-seq datasets in the format of matrix.Columns correpond to objects (cell barcodes for example), rows correspond to attributes or variables (gene symbols for example).
-#' @param N The number of co-expression clusters in the single cell data.
-#' @param K the number of rows in the data matrix
+#' @param N The number of rows in the data matrix
+#' @param K The number of co-expression clusters in the single cell data
 #' @param n.burnin the number of burnin for the MCMC process
 #' @param n.draw the number of drawing for the MCMC process
 #' @param maxiter An integer > 0. Default is 20. The number of iterations.
@@ -18,7 +18,7 @@ library(mpath); library(zic); library(pscl); library(glmnet); library(MASS); lib
 #' \dontrun{
 #' Pass a value to node as a replacement for FindAllMarkersNode
 #' system.file("extdata", "2012.csv", package = "testdat")}
-#' Multi_NB(datalist=trial, N=3, K=nrow(trial[[1]]))
+#' Multi_NB(datalist=trial, N=nrow(trial[[1]]),K=3)
 
 
 Multi_NB <- function(datalist,N,K,n.burnin=200,n.draw=200,maxiter=20,eps=1.0e-4,sdev=0.05,choice=NULL)
