@@ -80,10 +80,10 @@ Multi_NB <- function(datalist,N,K,n.burnin=200,n.draw=200,maxiter=20,eps=1.0e-4,
           {
     if (iter<10){term <- paste0('iter= ',iter)}else {term <- paste0('iter=',iter)}
     cat(paste0('## |                               ',term,'.....                                |\n'))
-                                                    
-    Res <- mclapply(Datas,function(dx){
+            
+    library(future.apply); plan(multisession);    
+    Res <- future_lapply(Datas,function(dx){
                         beta0 <- dx$B0; beta1 <- dx$B1
-                        library(future.apply); plan(multisession);     
                         res = future_lapply(1:ncol(dx$xi),FUN=function(f)
                             {
     datas <- data.frame(finalZ,y=dx$xi[,f]);
@@ -98,7 +98,7 @@ Multi_NB <- function(datalist,N,K,n.burnin=200,n.draw=200,maxiter=20,eps=1.0e-4,
                         dx$B0 <- dx$beta0; dx$B1 <- dx$beta1
                         dx$maxdif <- max(as.vector(dx$dif))
                         dx$lambda.mins <- 1
-                        return (dx) },mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
+                        return (dx) })
 }
 
         out <- tryCatch({updateZ(meanX,finalZ,Res,N,K,ndt,sdev,n.burnin,n.draw)},
