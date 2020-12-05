@@ -80,16 +80,16 @@ Multi_NB <- function(datalist,N,K,n.burnin=200,n.draw=200,maxiter=20,eps=1.0e-4,
           {
     if (iter<10){term <- paste0('iter= ',iter)}else {term <- paste0('iter=',iter)}
     cat(paste0('## |                               ',term,'.....                                |\n'))
-
+    
+    library(future.apply); plan(multisession);                                                                
     Res <- mclapply(Datas,function(dx){
                         beta0 <- dx$B0; beta1 <- dx$B1
 
-                        res = mclapply(1:ncol(dx$xi),FUN=function(f)
+                        res = future_lapply(1:ncol(dx$xi),FUN=function(f)
                             {
     datas <- data.frame(finalZ,y=dx$xi[,f]);
     fm_n1 <- glmregNB(y ~ .,data=datas,family='negbin',penalty="enet",lambda=lambda,alpha=alpha,thresh=thresh,standardize=FALSE);
-    return(list(coefs=as.matrix(coef(fm_n1)),ths=fm_n1$theta,mus=fm_n1$fitted.values))},
-                            mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
+    return(list(coefs=as.matrix(coef(fm_n1)),ths=fm_n1$theta,mus=fm_n1$fitted.values))})
 
                         dx$Coef <- do.call(cbind,map(res, 1))
                         dx$Ths <- do.call(cbind,map(res, 2))
