@@ -1,4 +1,7 @@
 # scLM
+
+[![DOI](https://zenodo.org/badge/205911304.svg)](https://zenodo.org/badge/latestdoi/205911304)
+
 A R-based tool to do the automatic identification of co-expressed genes across mulitple single cell RNA-seq datasets simultaneously
 
 # 1. Installation
@@ -104,4 +107,11 @@ optimal.lambda <- grep(min(unlist(bicS)),unlist(bicS))
 
 load(files[optimal.lambda])
 opitmal.cluster <- results$clusters
+```
+## Cite
+
+Please cite our paper if you use this code in your own work:
+
+```
+Song, Q., Su, J., Miller, L.D. and Zhang, W., 2021. scLM: automatic detection of consensus gene clusters across multiple single-cell datasets. Genomics, Proteomics & Bioinformatics, 19(2), pp.330-341.
 ```
